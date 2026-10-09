@@ -1,0 +1,28 @@
+# Kaggle raw data
+raw_data/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Customer-level / generated analysis datasets
+Project_2_KKBox_Churn_Analysis.csv
+Project_2_KKBox_Churn_Analysis.xlsx
+kkbox_leakage_safe_model_dataset.csv
+prediction_feature_register.csv
+model_dataset_*.csv
+customers_missing_*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
