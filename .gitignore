@@ -26,3 +26,14 @@ env/
 
 # VS Code
 .vscode/
+
+# Statistical analysis outputs
+statistical_categorical_results.csv
+statistical_numeric_results.csv
+statistical_analysis_summary.txt
+reviewed_statistical_categorical_results.csv
+reviewed_statistical_numeric_results.csv
+
+# Logistic regression outputs
+logistic_regression_results.csv
+logistic_regression_summary.txt
