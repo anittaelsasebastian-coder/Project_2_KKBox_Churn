@@ -1,4 +1,5 @@
 import os
+import numpy as np
 import pandas as pd
 
 
@@ -597,6 +598,18 @@ transaction_zero_columns = [
 
 for col in transaction_zero_columns:
     model[col] = model[col].fillna(0)
+
+# No transaction history means average payment is unknown,
+# not a measured average of zero.
+no_transaction_history = model["has_transaction_history"] == 0
+
+model.loc[
+    no_transaction_history,
+    [
+        "average_actual_amount_paid",
+        "average_plan_list_price",
+    ],
+] = np.nan
 
 
 # Numeric usage fields:

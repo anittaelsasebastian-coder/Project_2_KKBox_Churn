@@ -215,14 +215,36 @@ date_columns = [
 ]
 
 for column in date_columns:
+    if column not in df.columns:
+        continue
 
-    if column in df.columns:
+    raw = df[column]
 
-        df[column] = pd.to_datetime(
-            df[column],
-            errors="coerce"
+    if column == "latest_membership_expire_date":
+        # This column is still stored as YYYYMMDD by the builder.
+        numeric = pd.to_numeric(raw, errors="coerce")
+        date_text = numeric.astype("Int64").astype("string")
+
+        parsed = pd.to_datetime(
+            date_text,
+            format="%Y%m%d",
+            errors="coerce",
+        )
+    else:
+        # These columns were parsed as datetimes by the builder
+        # and are saved to CSV as ISO-style date strings.
+        parsed = pd.to_datetime(raw, errors="coerce")
+
+    invalid = raw.notna() & parsed.isna()
+
+    if invalid.any():
+        examples = raw[invalid].astype(str).head(10).tolist()
+        raise ValueError(
+            f"{column}: {invalid.sum()} nonmissing dates "
+            f"could not be parsed. Examples: {examples}"
         )
 
+    df[column] = parsed
 
 # ------------------------------------------------------------
 # 10. DATE / LEAKAGE VALIDATION
@@ -233,7 +255,6 @@ print("-" * 78)
 
 leakage_columns = [
     "latest_transaction_date",
-    "latest_membership_expire_date",
     "first_transaction_date",
     "first_active_date",
     "last_active_date",
@@ -508,7 +529,7 @@ print("\n14. CATEGORICAL FEATURE CHECK")
 print("-" * 78)
 
 categorical_columns = df.select_dtypes(
-    include=["object"]
+    include=["str", "object", "category", "bool"]
 ).columns.tolist()
 
 for column in categorical_columns:
