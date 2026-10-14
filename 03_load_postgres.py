@@ -1,5 +1,6 @@
 import pandas as pd
 import psycopg2
+import os
 from pathlib import Path
 from io import StringIO
 
@@ -18,7 +19,7 @@ conn = psycopg2.connect(
     port=5432,
     database="kkbox_churn",
     user="postgres",
-    password="td2l!sdfB"
+    password=os.getenv("POSTGRES_PASSWORD")
 )
 
 print("PostgreSQL connection successful.")
