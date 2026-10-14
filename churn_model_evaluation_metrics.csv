@@ -1,0 +1,2 @@
+split,random_seed,threshold,train_rows,test_rows,train_churn_rate,test_churn_rate,roc_auc,pr_auc_average_precision,accuracy,balanced_accuracy,precision,recall,f1,brier_score,true_negatives,false_positives,false_negatives,true_positives,majority_class_accuracy
+stratified_80_20,42,0.5,6000,1500,0.09483333333333334,0.09466666666666666,0.8190794250036301,0.528392596290873,0.9266666666666666,0.6442054388184779,0.8076923076923077,0.29577464788732394,0.4329896907216495,0.06046084118054255,1348,10,100,42,0.9053333333333333
