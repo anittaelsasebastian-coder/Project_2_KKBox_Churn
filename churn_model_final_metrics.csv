@@ -1,0 +1,2 @@
+threshold,test_rows,test_churners,roc_auc,precision,precision_ci_low,precision_ci_high,recall,recall_ci_low,recall_ci_high,true_negatives,false_positives,false_negatives,true_positives,random_flag_precision
+0.1,1500,142,0.8190794250036301,0.42081447963800905,0.35376645458534445,0.48718274111675125,0.6549295774647887,0.5784791169782018,0.7313467385295743,1230,128,49,93,0.09466666666666666
