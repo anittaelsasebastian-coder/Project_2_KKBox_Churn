@@ -361,7 +361,13 @@ if not transactions.empty:
     latest = (
         transactions
         .sort_values(
-            ["msno", "transaction_date"]
+            [
+                "msno",
+                "transaction_date",
+                "membership_expire_date",
+                "is_cancel",
+            ],
+            kind="mergesort"
         )
         .groupby("msno")
         .tail(1)

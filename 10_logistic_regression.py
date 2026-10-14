@@ -30,6 +30,7 @@ NUMERIC_FEATURES = [
     "registration_days_before_cutoff",
     "transaction_count",
     "days_since_latest_transaction",
+    "has_transaction_history",
     "active_days",
     "days_since_last_activity",
 ]
@@ -105,11 +106,24 @@ for col in NUMERIC_FEATURES:
             [np.inf, -np.inf], np.nan
         )
 
+        
         if col == "days_since_latest_transaction":
-            # Keep missing recency for customers without transactions.
-            # The history indicator distinguishes these customers.
-            model_df[col] = model_df[col].fillna(0)
+            history_mask = (
+                model_df["has_transaction_history"].eq(1)
+                if "has_transaction_history" in model_df.columns
+                else model_df[col].notna()
+            )
+            median = model_df.loc[history_mask, col].median()
+
+            if pd.isna(median):
+                raise ValueError(
+                    "Cannot impute transaction recency: "
+                    "no valid historical values."
+                )
+
+            model_df[col] = model_df[col].fillna(median)
         else:
+
             median = model_df[col].median()
             if pd.isna(median):
                 print(f"Excluding all-missing numeric feature: {col}")

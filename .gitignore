@@ -50,3 +50,6 @@ scored_customers*.csv
 *.env
 *.pem
 *.key
+
+# Scratch backups from tie-break comparison
+*_before_tiebreak.csv
