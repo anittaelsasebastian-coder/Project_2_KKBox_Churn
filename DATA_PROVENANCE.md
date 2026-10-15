@@ -39,3 +39,10 @@
 ## Data use and redistribution
 - The raw data comes from the WSDM KKBox churn competition. Its rules limit data use to the competition, forum discussion, academic research and education, and prohibit redistribution.
 - This repository publishes code and aggregate summary tables only. It publishes no raw data, customer-level data or customer-level predictions.
+
+## Recent engagement features (tested, not added to the model)
+- Built by `18_build_recent_usage.py` from `user_logs.csv`, counting only listening on or before the cutoff: active days in the last 7 and 30 days, listening seconds and unique songs in the last 30 days, and the change in active days versus the prior 30 days.
+- Descriptive check (`19_check_recent_usage.py`): churned and retained customers have almost the same recent activity (14.60 vs 14.73 active days in the last 30). Churn is flat across activity bands (8.18% to 10.64%).
+- One unexplained group: customers whose active days rose by 8 or more had 14.98% churn (574 customers). Many groupings were examined, so this is a hypothesis and not a finding.
+- Model check (`20_compare_recent_features.py`): 5-fold cross-validation on the 6,000 training customers, repeated with 3 seeds. Adding the features changed mean ROC-AUC from 0.8348 to 0.8387 and mean average precision from 0.5299 to 0.5421. The gain is small, and the repeated seeds do not measure variation across different customers.
+- Decision: the features are not added to the final model. The 0.10 threshold and the test results are unchanged, and the test set was not used for this comparison.
