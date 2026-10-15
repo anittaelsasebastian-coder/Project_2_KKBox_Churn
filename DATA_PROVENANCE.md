@@ -30,3 +30,12 @@
 ## Privacy
 - Customer-level files (raw data, model dataset, predictions) are ignored by Git and never published.
 - A database password was once committed. It was rotated, and the code now reads `POSTGRES_PASSWORD` from the environment.
+
+## Open methodological question: same-day transactions
+- The current rule orders same-day transactions by membership expiry date, then cancel flag, with a stable sort. It is reproducible, but it has not been verified as KKBox's official rule.
+- The official Kaggle description names transaction date, membership expiry date and `is_cancel` as the key churn fields. A fuller same-day ordering (plan price, plan length, payment method) was suggested in outside material, but it could not be confirmed from a primary source, so it is not applied.
+- Impact is bounded: the tie-break affected 54 of 7,500 customers (0.72%), and the model and regression conclusions did not change.
+
+## Data use and redistribution
+- The raw data comes from the WSDM KKBox churn competition. Its rules limit data use to the competition, forum discussion, academic research and education, and prohibit redistribution.
+- This repository publishes code and aggregate summary tables only. It publishes no raw data, customer-level data or customer-level predictions.
