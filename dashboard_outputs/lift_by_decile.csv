@@ -1,0 +1,11 @@
+risk_decile,customers,churned,churn_rate_pct,lift_vs_average,cumulative_churners_captured_pct,cutoff_date,source_script
+1,150,77,51.33,5.42,54.2,2017-02-28,21_export_dashboard_tables.py
+2,150,22,14.67,1.55,69.7,2017-02-28,21_export_dashboard_tables.py
+3,150,10,6.67,0.7,76.8,2017-02-28,21_export_dashboard_tables.py
+4,150,5,3.33,0.35,80.3,2017-02-28,21_export_dashboard_tables.py
+5,150,5,3.33,0.35,83.8,2017-02-28,21_export_dashboard_tables.py
+6,150,4,2.67,0.28,86.6,2017-02-28,21_export_dashboard_tables.py
+7,150,4,2.67,0.28,89.4,2017-02-28,21_export_dashboard_tables.py
+8,150,5,3.33,0.35,93.0,2017-02-28,21_export_dashboard_tables.py
+9,150,4,2.67,0.28,95.8,2017-02-28,21_export_dashboard_tables.py
+10,150,6,4.0,0.42,100.0,2017-02-28,21_export_dashboard_tables.py

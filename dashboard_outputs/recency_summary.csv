@@ -1,0 +1,5 @@
+group,customers,churned,churn_rate_pct,cutoff_date,source_script
+0-7 days,2360,130,5.51,2017-02-28,21_export_dashboard_tables.py
+31+ days,352,269,76.42,2017-02-28,21_export_dashboard_tables.py
+8-30 days,4773,306,6.41,2017-02-28,21_export_dashboard_tables.py
+no history,15,6,40.0,2017-02-28,21_export_dashboard_tables.py

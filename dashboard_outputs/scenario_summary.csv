@@ -1,0 +1,4 @@
+churn_reduction_points,manual_renew_customers,illustrative_avoided_churn_events,avg_monthly_revenue_churned_manual,gross_monthly_revenue_scenario,gross_annualized_scenario,note,cutoff_date,source_script
+2,1015,20.3,140.76,2857.48,34289.74,"Illustrative, before intervention cost, not a forecast",2017-02-28,21_export_dashboard_tables.py
+5,1015,50.75,140.76,7143.7,85724.34,"Illustrative, before intervention cost, not a forecast",2017-02-28,21_export_dashboard_tables.py
+10,1015,101.5,140.76,14287.39,171448.69,"Illustrative, before intervention cost, not a forecast",2017-02-28,21_export_dashboard_tables.py

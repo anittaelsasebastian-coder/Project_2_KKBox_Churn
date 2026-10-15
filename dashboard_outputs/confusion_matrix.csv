@@ -1,0 +1,5 @@
+actual,predicted,customers,cutoff_date,source_script
+retained,retained,1230,2017-02-28,15_final_test_evaluation.py
+retained,flagged,128,2017-02-28,15_final_test_evaluation.py
+churned,retained,49,2017-02-28,15_final_test_evaluation.py
+churned,flagged,93,2017-02-28,15_final_test_evaluation.py

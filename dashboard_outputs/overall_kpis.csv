@@ -1,0 +1,4 @@
+metric,value,cutoff_date,source_script
+customers,7500.0,2017-02-28,21_export_dashboard_tables.py
+churned_customers,711.0,2017-02-28,21_export_dashboard_tables.py
+churn_rate_pct,9.48,2017-02-28,21_export_dashboard_tables.py

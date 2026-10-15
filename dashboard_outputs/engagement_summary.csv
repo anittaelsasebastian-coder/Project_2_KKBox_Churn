@@ -1,0 +1,11 @@
+group,customers,churned,churn_rate_pct,measure,cutoff_date,source_script
+0 days,929,76,8.18,active days in last 30,2017-02-28,21_export_dashboard_tables.py
+1-7,1424,149,10.46,active days in last 30,2017-02-28,21_export_dashboard_tables.py
+8-14,1255,114,9.08,active days in last 30,2017-02-28,21_export_dashboard_tables.py
+15-21,1400,149,10.64,active days in last 30,2017-02-28,21_export_dashboard_tables.py
+22-30,2492,223,8.95,active days in last 30,2017-02-28,21_export_dashboard_tables.py
+fell 8+,536,62,11.57,change vs prior 30 days,2017-02-28,21_export_dashboard_tables.py
+fell 1-7,2652,232,8.75,change vs prior 30 days,2017-02-28,21_export_dashboard_tables.py
+no change,1475,113,7.66,change vs prior 30 days,2017-02-28,21_export_dashboard_tables.py
+rose 1-7,2263,218,9.63,change vs prior 30 days,2017-02-28,21_export_dashboard_tables.py
+rose 8+,574,86,14.98,change vs prior 30 days,2017-02-28,21_export_dashboard_tables.py
