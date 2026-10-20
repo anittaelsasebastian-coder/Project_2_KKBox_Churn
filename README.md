@@ -87,3 +87,6 @@ Status: a clean clone installs from requirements.txt (Python 3.12) and all scrip
 ## Data privacy
 
 Customer-level files (raw data, model dataset, predictions) are excluded by `.gitignore`. Scripts read the database password from the `POSTGRES_PASSWORD` environment variable.
+## Business analysis
+
+Problem statement, stakeholders, KPI definitions, requirements and a pilot design are in [BUSINESS_ANALYSIS.md](BUSINESS_ANALYSIS.md). Stakeholder roles are assumed for illustration.
