@@ -82,7 +82,7 @@ python3 15_final_test_evaluation.py
 python3 21_export_dashboard_tables.py
 ```
 
-Status: not yet verified from a clean clone.
+Status: a clean clone installs from requirements.txt (Python 3.12) and all scripts compile without errors. The full pipeline was not re-run from a clean clone because the raw data cannot be redistributed, so reproducing the numbers requires the Kaggle files.
 
 ## Data privacy
 
