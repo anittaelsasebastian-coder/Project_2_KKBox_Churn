@@ -90,3 +90,7 @@ Customer-level files (raw data, model dataset, predictions) are excluded by `.gi
 ## Business analysis
 
 Problem statement, stakeholders, KPI definitions, requirements and a pilot design are in [BUSINESS_ANALYSIS.md](BUSINESS_ANALYSIS.md). Stakeholder roles are assumed for illustration.
+
+## Data dictionary
+
+Column definitions for the model dataset and the dashboard tables are in [DATA_DICTIONARY.md](DATA_DICTIONARY.md).
