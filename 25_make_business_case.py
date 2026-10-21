@@ -57,24 +57,24 @@ ws.column_dimensions["C"].width = 44
 sc = wb.create_sheet("Scenarios")
 cell(sc, "A1", "Costed scenarios (sample scale: customers contacted = manual-renew sample)", TITLE)
 cell(sc, "A2", "Levers in yellow are assumptions. Change them to test the case.", NOTE)
-header(sc, 4, ["Lever (assumption)", "Low", "Base", "High"])
+header(sc, 4, ["Lever (assumption)", "Low", "Base", "Base + incentive", "High"])
 levers = [
-    ("Churn reduction (percentage points)", (0.02, 0.05, 0.10), PCT,
+    ("Churn reduction (percentage points)", (0.02, 0.05, 0.05, 0.10), PCT,
      "Planning values, not estimates. The pilot measures the real effect."),
-    ("Months a saved customer stays", (3, 6, 12), INT, "Assumption."),
-    ("Contribution margin on revenue", (0.25, 0.30, 0.35), PCT,
+    ("Months a saved customer stays", (3, 6, 6, 12), INT, "Assumption."),
+    ("Contribution margin on revenue", (0.25, 0.30, 0.30, 0.35), PCT,
      "Assumption. Music streaming margins are thin after royalties."),
-    ("Contact cost per customer (NTD)", (5, 2, 1), NTD, "Assumption: email and in-app prompt."),
-    ("Opt-in rate to auto-renew", (0.20, 0.30, 0.40), PCT, "Assumption."),
-    ("Incentive per opt-in (NTD)", (30, 0, 0), NTD,
-     "Base design has no price incentive. Low case tests a 30 NTD incentive."),
+    ("Contact cost per customer (NTD)", (5, 2, 2, 1), NTD, "Assumption: email and in-app prompt."),
+    ("Opt-in rate to auto-renew", (0.20, 0.30, 0.30, 0.40), PCT, "Assumption."),
+    ("Incentive per opt-in (NTD)", (30, 0, 30, 0), NTD,
+     "Base design has no price incentive. 'Base + incentive' changes only this lever, so it isolates the incentive's cost."),
 ]
 for r, (lab, vals, fmt, note) in enumerate(levers, start=5):
     cell(sc, f"A{r}", lab, note=note)
-    for col, v in zip("BCD", vals):
+    for col, v in zip("BCDE", vals):
         cell(sc, f"{col}{r}", v, BLUE, fmt, YELLOW)
 
-header(sc, 12, ["Result (formula)", "Low", "Base", "High"])
+header(sc, 12, ["Result (formula)", "Low", "Base", "Base + incentive", "High"])
 results = [
     ("Customers contacted", "=Inputs!$B$5", INT),
     ("Avoided churners", "={c}13*{c}5", '#,##0.0'),
@@ -89,7 +89,7 @@ results = [
 ]
 for r, (lab, f, fmt) in enumerate(results, start=13):
     cell(sc, f"A{r}", lab, BOLD if r in (17, 19) else NORM)
-    for col in "BCD":
+    for col in "BCDE":
         cell(sc, f"{col}{r}", f.format(c=col), BOLD if r in (17, 19) else NORM, fmt)
 
 cell(sc, "A22", "Sensitivity: net value (NTD) by churn reduction, other levers at Base", BOLD)
@@ -97,10 +97,12 @@ header(sc, 23, ["Churn reduction (points)", "Net value (NTD)"])
 for r, eff in enumerate((0.01, 0.02, 0.03, 0.05, 0.07, 0.10), start=24):
     cell(sc, f"A{r}", eff, BLUE, PCT)
     cell(sc, f"B{r}", f"=$C$13*A{r}*Inputs!$B$7*$C$7*$C$6-$C$16", NORM, NTD)
+cell(sc, "A32", "'Base + incentive' equals Base except for a 30 NTD incentive per opt-in. "
+     "It shows how much extra churn reduction an incentive must buy just to pay for itself.", NOTE)
 cell(sc, "A31", "Sample scale only. At full scale, multiply customers contacted by "
      "the eligible volume. Figures are what-ifs, not forecasts.", NOTE)
 sc.column_dimensions["A"].width = 44
-for col in "BCD": sc.column_dimensions[col].width = 16
+for col in "BCDE": sc.column_dimensions[col].width = 18
 
 # ---------------- Pilot sample size ----------------
 ps = wb.create_sheet("Pilot")
@@ -133,7 +135,7 @@ log = [
     ("Months retained 3 / 6 / 12", "Assumption", "Scenarios row 6", "Scales value linearly"),
     ("Margin 25% / 30% / 35%", "Assumption", "Scenarios row 7", "Revenue is not profit"),
     ("Contact cost 5 / 2 / 1 NTD", "Assumption", "Scenarios row 8", "Main programme cost"),
-    ("Opt-in rate, incentive", "Assumption", "Scenarios rows 9-10", "Only matters with an incentive"),
+    ("Opt-in rate, 30 NTD incentive", "Assumption", "Scenarios rows 9-10", "Incentive needs about 4.3 points to break even"),
     ("5-point minimum effect", "Assumption", "Pilot B5", "Smaller effect needs a bigger pilot"),
     ("Monthly eligible volume", "Unknown", "Pilot B13", "Decides pilot duration"),
     ("Customers, churn, revenue", "Data (sample)", "Inputs B5:B7", "2017 sample, not company-wide"),
