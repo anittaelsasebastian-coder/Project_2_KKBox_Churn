@@ -56,3 +56,6 @@ scored_customers*.csv
 
 # Test environment
 .venv_test/
+
+# Excel lock files
+~$*
