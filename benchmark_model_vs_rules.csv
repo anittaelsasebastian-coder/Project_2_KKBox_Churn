@@ -1,0 +1,10 @@
+approach,customers_flagged,share_contacted_pct,churners_caught,precision_pct,churners_captured_pct,auto_renew_churners_caught,test_customers,test_churners,source_script
+Rule: manual-renew,200,13.3,83.0,41.5,58.5,0 of 58,1500,142,24_benchmark_rules.py
+"Model, same budget as 'manual-renew'",200,13.3,85.0,42.5,59.9,2 of 58,1500,142,24_benchmark_rules.py
+Rule: manual-renew OR 31+ days lapsed,223,14.9,99.0,44.4,69.7,16 of 58,1500,142,24_benchmark_rules.py
+"Model, same budget as 'manual-renew OR 31+ days lapsed'",223,14.9,93.0,41.7,65.5,9 of 58,1500,142,24_benchmark_rules.py
+Model at threshold 0.10,221,14.7,93.0,42.1,65.5,9 of 58,1500,142,24_benchmark_rules.py
+"Model, top 10%",150,10.0,77.0,51.3,54.2,2 of 58,1500,142,24_benchmark_rules.py
+"Random, top 10% (expected)",150,10.0,14.2,9.5,10.0,-,1500,142,24_benchmark_rules.py
+"Model, top 20%",300,20.0,99.0,33.0,69.7,15 of 58,1500,142,24_benchmark_rules.py
+"Random, top 20% (expected)",300,20.0,28.4,9.5,20.0,-,1500,142,24_benchmark_rules.py

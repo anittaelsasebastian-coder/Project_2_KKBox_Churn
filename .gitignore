@@ -53,3 +53,6 @@ scored_customers*.csv
 
 # Scratch backups from tie-break comparison
 *_before_tiebreak.csv
+
+# Test environment
+.venv_test/
