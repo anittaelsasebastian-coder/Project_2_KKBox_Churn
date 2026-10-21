@@ -47,6 +47,8 @@ The two-customer gap at 200 contacts is too small to call the model better. Both
 | [business_case.xlsx](business_case.xlsx) | Costed scenarios (Low, Base, Base + incentive, High), break-even, sensitivity table, pilot sample size and an assumption log. Built by `25_make_business_case.py`; all results are live formulas |
 | [docs/process_as_is_to_be.drawio](docs/process_as_is_to_be.drawio) | Current and proposed renewal process with swimlanes and business rules. Open it at app.diagrams.net |
 
+![Current and proposed renewal process](docs/process_as_is_to_be.png)
+
 **Business case at a glance** (sample scale, assumptions marked in the workbook): with a 5-point churn reduction and no incentive, net value is about 10,800 NTD on 1,015 customers. Adding a 30 NTD incentive cuts it to about 1,700 NTD. The pilot needs about 1,491 customers per arm to detect a 5-point drop. Whether that is feasible depends on monthly eligible volume at full scale, which is an assumption to confirm, not a sample figure. These are what-ifs, not forecasts.
 
 ## Dashboard
