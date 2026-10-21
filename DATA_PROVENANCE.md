@@ -23,7 +23,7 @@
 
 ## Model evaluation
 - Random stratified 80/20 split (seed 42): 6,000 train, 1,500 test. Not temporal validation, so no claim is made about future performance.
-- Threshold 0.10 was chosen on out-of-fold training predictions only (`14_select_threshold.py`), then evaluated once on the test set (`15_final_test_evaluation.py`).
+- Threshold 0.10 was chosen on out-of-fold training predictions only (`14_select_threshold.py`), with final metrics from the fixed seed-42 holdout (`15_final_test_evaluation.py`). The holdout was later reused for the rule benchmark (`24_benchmark_rules.py`); no model choice was changed as a result.
 - Test result: precision 0.421 (95% CI 0.354 to 0.487), recall 0.655 (95% CI 0.578 to 0.731), ROC-AUC 0.8191.
 - The explanatory regression and the evaluation script changed together (recency imputation and a history flag), so differences from earlier runs cannot be credited to the tie-break fix alone.
 

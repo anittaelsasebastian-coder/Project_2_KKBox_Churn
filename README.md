@@ -15,6 +15,7 @@ Data: a 7,500-customer random sample (seed 42) from the WSDM KKBox churn competi
 | Recent listening | No clear difference between churned and retained customers (8.18% to 10.64% across activity groups) |
 | Model (held-out test, threshold 0.10) | Precision 42.1% (95% interval 35.4% to 48.7%), recall 65.5% (57.8% to 73.1%), ROC-AUC 0.8191 |
 | Ranking | The top risk decile churned at 51.33%; the top two deciles capture 69.7% of churners |
+| Model vs simple rule | At the same contact budget the model did not beat a rule. Manual-renew alone caught 83 of 142 test churners (model: 85). Manual-renew OR 31+ days lapsed caught 99 (model: 93). The model only helps if fewer than about 10% of customers can be contacted. See `benchmark_model_vs_rules.csv` |
 
 These are observed associations, not proof of cause. Switching customers to auto-renew might not produce the same drop in churn.
 
@@ -39,7 +40,7 @@ The data in `dashboard_outputs/` is correct, and the dashboard can be rebuilt fr
 
 1. Build a cutoff-safe dataset: only transactions and listening on or before 2017-02-28 are used as features.
 2. Validate the dataset and run statistical tests and an explanatory logistic regression.
-3. Evaluate a prediction model on a stratified 80/20 split. The threshold (0.10) was selected on out-of-fold training predictions only, then evaluated once on the test set.
+3. Evaluate a prediction model on a stratified 80/20 split. The threshold (0.10) was selected using training-only out-of-fold predictions; final metrics use the fixed seed-42 holdout. The holdout was later reused for the rule benchmark (`24_benchmark_rules.py`), which compares targeting approaches but changes no model choice.
 4. Test whether recent-listening features improve the model (they do not meaningfully).
 5. Export summary tables for the dashboard.
 
