@@ -60,14 +60,6 @@ Built in Power BI (online) from summary tables only. See `dashboard_outputs/kkbo
 ![Engagement](docs/dashboard_screenshots/page3_engagement.png)
 ![Model and targeting](docs/dashboard_screenshots/page4_model_and_targeting.png)
 
-**Known issues in the screenshots.** The report was built with a university account that I can no longer access, so I could not correct these:
-- Page 1: "transition" should read "transaction" in the limitation text.
-- Page 3: "14.198%" should read 14.98%, and "let out" should read "left out".
-- Page 4: the metrics table shows a meaningless total row, and the gains chart axis starts at 50.
-- Page 2: the revenue scenario shown is an older gross, cost-free version. The current, costed figures are in `business_case.xlsx`.
-
-The data in `dashboard_outputs/` is correct, and the dashboard can be rebuilt from it.
-
 ## Method
 
 1. Build a cutoff-safe dataset: only transactions and listening on or before 2017-02-28 are used as features.
